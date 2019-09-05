@@ -1,0 +1,27 @@
+import "google/protobuf/any.proto";
+
+syntax = "proto3";
+
+enum DataType { 
+    String = 0;
+    Number = 1;
+    Bool = 2;
+}
+
+message Field {
+    string name;
+    DataType type;
+    google.protobuf.Any value; 
+}
+
+message Row {
+    repeated Field fields;
+}
+
+message DataFrame {
+    repeated Row Rows
+}
+
+service PredictionService {
+    rpc Predict (DataFrame) returns (DataFrame);
+}
